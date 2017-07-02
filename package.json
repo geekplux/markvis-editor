@@ -1,0 +1,22 @@
+{
+  "name": "markvis-editor",
+  "version": "0.0.0",
+  "description": "a web markdown editor for markvis",
+  "repository": {
+    "url": "geekplux/markvis-editor",
+    "type": "git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "dev": "poi",
+    "build": "poi build",
+    "deploy": "npm run build && gh-pages -d dist",
+    "test": "echo 'no tests!' && npm run deploy"
+  },
+  "author": "geekplux <geekplux@gmail.com> (github.com/geekplux)",
+  "license": "MIT",
+  "devDependencies": {
+    "poi": "^8.0.0",
+    "gh-pages": "^0.12.0"
+  }
+}
