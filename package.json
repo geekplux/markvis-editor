@@ -16,8 +16,8 @@
   "author": "geekplux <geekplux@gmail.com> (github.com/geekplux)",
   "license": "MIT",
   "devDependencies": {
-    "gh-pages": "^0.12.0",
-    "poi": "^8.0.0"
+    "gh-pages": "^1.0.0",
+    "poi": "^9.1.0"
   },
   "dependencies": {
     "d3": "^4.9.1",
