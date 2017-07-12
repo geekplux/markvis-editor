@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="250" src="./static/markvis-logo.svg" alt="preview" />
+  <img width="250" src="./static/markvis-logo.png" alt="logo" />
 </p>
 
 # [markvis-editor](https://markvis-editor.js.org)
@@ -7,6 +7,8 @@
 > a web markdown editor for [markvis](https://github.com/geekplux/markvis)
 
 You can have a try [online](https://markvis-editor.js.org)
+
+- Markvis [Documentation](https://markvis.js.org)
 
 ## Preview
 

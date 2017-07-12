@@ -3078,27 +3078,27 @@ markdown-it@^8.3.1:
     mdurl "^1.0.1"
     uc.micro "^1.0.3"
 
-markvis-bar@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/markvis-bar/-/markvis-bar-0.0.5.tgz#953e2484305d6b46290b5ef11ff7540ad99cfe31"
+markvis-bar@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/markvis-bar/-/markvis-bar-0.0.9.tgz#7f685ef06bfd79beaf1e17a59dfe4474964cc939"
 
-markvis-line@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/markvis-line/-/markvis-line-0.0.2.tgz#0159ea9ed6a7d883a8528f5546e23e340eae8144"
+markvis-line@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/markvis-line/-/markvis-line-0.0.6.tgz#8fecf8fe1b87d7fc798cae7c52d56cb3faabce8a"
 
-markvis-pie@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/markvis-pie/-/markvis-pie-0.0.3.tgz#6b162ea9a8d7b92c82e71cef933fedf945b1ce3a"
+markvis-pie@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/markvis-pie/-/markvis-pie-0.0.6.tgz#9f463f0d4252c8f6bd6149e8198b23d9ea9db76b"
 
-markvis@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/markvis/-/markvis-0.0.8.tgz#6c1a2bc9045cc21fcdc7c16a14fb99a06908bf2a"
+markvis@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/markvis/-/markvis-0.0.11.tgz#dc33a3924e689e6641b901724a3a2e486333ee01"
   dependencies:
     js-yaml "^3.8.2"
     markdown-it-fence "^0.0.2"
-    markvis-bar "^0.0.5"
-    markvis-line "^0.0.2"
-    markvis-pie "^0.0.3"
+    markvis-bar "^0.0.9"
+    markvis-line "^0.0.6"
+    markvis-pie "^0.0.6"
 
 math-expression-evaluator@^1.2.14:
   version "1.2.17"
