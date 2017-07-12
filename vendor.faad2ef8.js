@@ -265,7 +265,7 @@ function normalizeReference(str) {
 //
 exports.lib                 = {};
 exports.lib.mdurl           = __webpack_require__(/*! mdurl */ 18);
-exports.lib.ucmicro         = __webpack_require__(/*! uc.micro */ 113);
+exports.lib.ucmicro         = __webpack_require__(/*! uc.micro */ 116);
 
 exports.assign              = assign;
 exports.isString            = isString;
@@ -1732,10 +1732,10 @@ module.exports.postProcess = function strikethrough(state) {
 
 
 
-module.exports.encode = __webpack_require__(/*! ./encode */ 108);
-module.exports.decode = __webpack_require__(/*! ./decode */ 107);
-module.exports.format = __webpack_require__(/*! ./format */ 109);
-module.exports.parse  = __webpack_require__(/*! ./parse */ 110);
+module.exports.encode = __webpack_require__(/*! ./encode */ 111);
+module.exports.decode = __webpack_require__(/*! ./decode */ 110);
+module.exports.format = __webpack_require__(/*! ./format */ 112);
+module.exports.parse  = __webpack_require__(/*! ./parse */ 113);
 
 
 /***/ }),
@@ -32479,7 +32479,7 @@ var ParserBlock  = __webpack_require__(/*! ./parser_block */ 64);
 var ParserInline = __webpack_require__(/*! ./parser_inline */ 66);
 var LinkifyIt    = __webpack_require__(/*! linkify-it */ 53);
 var mdurl        = __webpack_require__(/*! mdurl */ 18);
-var punycode     = __webpack_require__(/*! punycode */ 111);
+var punycode     = __webpack_require__(/*! punycode */ 114);
 
 
 var config = {
@@ -37473,56 +37473,60 @@ module.exports = function text_collapse(state) {
 /* 102 */
 /* no static exports found */
 /* all exports used */
-/*!********************************!*\
-  !*** ./~/markvis-bar/index.js ***!
-  \********************************/
-/***/ (function(module, exports) {
+/*!*************************************!*\
+  !*** ./~/markvis-bar/dist/index.js ***!
+  \*************************************/
+/***/ (function(module, exports, __webpack_require__) {
 
-function addStyle (css) {
-  const head = document.head || document.getElementsByTagName('head')[0];
-  const style = document.createElement('style');
+"use strict";
 
-  style.type = 'text/css';
-  if (style.styleSheet){
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
 
-  head.appendChild(style);
-}
+/**
+ * @fileOverview Generate bar chart for markvis
+ * @name index.js<src>
+ * @author GeekPlux
+ * @license MIT
+ */
+var _require = __webpack_require__(/*! ./utils */ 103),
+    addStyle = _require.addStyle;
 
-function bar ({
-  data,
-  d3,
-  d3node,
-  selector: _selector = '#chart',
-  container: _container = `
-    <div id="container">
-      <h2>Bar Chart</h2>
-      <div id="chart"></div>
-    </div>
-  `,
-  style: _style = '',
-  width: _width = 960,
-  height: _height = 500,
-  margin: _margin = { top: 20, right: 20, bottom: 20, left: 20 },
-  barColor: _barColor = 'steelblue',
-  barHoverColor: _barHoverColor = 'brown',
-  export: _export = false,
-} = {}) {
-  const _svgStyles = `
-    .bar { fill: ${_barColor}; }
-    .bar:hover { fill: ${_barHoverColor}; }
-  ` + _style;
+function bar() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      data = _ref.data,
+      d3 = _ref.d3,
+      D3Node = _ref.d3node,
+      _ref$selector = _ref.selector,
+      _selector = _ref$selector === undefined ? '#chart' : _ref$selector,
+      _ref$container = _ref.container,
+      _container = _ref$container === undefined ? '\n    <div id="container">\n      <h2>Bar Chart</h2>\n      <div id="chart"></div>\n    </div>\n  ' : _ref$container,
+      _ref$style = _ref.style,
+      _style = _ref$style === undefined ? '' : _ref$style,
+      _ref$width = _ref.width,
+      _width = _ref$width === undefined ? 960 : _ref$width,
+      _ref$height = _ref.height,
+      _height = _ref$height === undefined ? 500 : _ref$height,
+      _ref$margin = _ref.margin,
+      _margin = _ref$margin === undefined ? { top: 20, right: 20, bottom: 20, left: 20 } : _ref$margin,
+      _ref$barColor = _ref.barColor,
+      _barColor = _ref$barColor === undefined ? 'steelblue' : _ref$barColor,
+      _ref$barHoverColor = _ref.barHoverColor,
+      _barHoverColor = _ref$barHoverColor === undefined ? 'brown' : _ref$barHoverColor,
+      _ref$export = _ref.export,
+      _export = _ref$export === undefined ? false : _ref$export;
 
-  let _d3;
-  let d3n;
-  let svg;
-  let _div;
+  var _svgStyles = '\n    .bar { fill: ' + _barColor + '; }\n    .bar:hover { fill: ' + _barHoverColor + '; }\n  ' + _style;
 
-  if (d3node) {
-    d3n = new d3node({
+  var _d3 = void 0;
+  var d3n = void 0;
+  var svg = void 0;
+  var _div = void 0;
+
+  var isNodeEnv = function isNodeEnv() {
+    return D3Node;
+  };
+
+  if (isNodeEnv()) {
+    d3n = new D3Node({
       selector: _selector,
       styles: _svgStyles,
       container: _container
@@ -37537,47 +37541,37 @@ function bar ({
     addStyle(_svgStyles);
   }
 
-  const width = _width - _margin.left - _margin.right;
-  const height = _height - _margin.top - _margin.bottom;
+  var width = _width - _margin.left - _margin.right;
+  var height = _height - _margin.top - _margin.bottom;
 
-  const g = svg.attr('width', _width)
-        .attr('height', _height)
-        .append('g')
-        .attr('transform', `translate(${_margin.left}, ${_margin.top})`);
+  var g = svg.attr('width', _width).attr('height', _height).append('g').attr('transform', 'translate(' + _margin.left + ', ' + _margin.top + ')');
 
-  // set the ranges
-  const x = _d3.scaleBand()
-        .range([0, width])
-        .padding(0.1);
+  var x = _d3.scaleBand().range([0, width]).padding(0.1);
 
-  const y = _d3.scaleLinear()
-        .range([height, 0]);
+  var y = _d3.scaleLinear().range([height, 0]);
 
-  x.domain(data.map((d) => d.key));
-  y.domain([0, _d3.max(data, (d) => d.value)]);
+  x.domain(data.map(function (d) {
+    return d.key;
+  }));
+  y.domain([0, _d3.max(data, function (d) {
+    return d.value;
+  })]);
 
-  // append the rectangles for the bar chart
-  g.selectAll('.bar')
-    .data(data)
-    .enter().append('rect')
-    .attr('class', 'bar')
-    .attr('x', (d) => x(d.key))
-    .attr('width', x.bandwidth())
-    .attr('y', (d) => y(d.value))
-    .attr('height', (d) => height - y(d.value));
+  g.selectAll('.bar').data(data).enter().append('rect').attr('class', 'bar').attr('x', function (d) {
+    return x(d.key);
+  }).attr('width', x.bandwidth()).attr('y', function (d) {
+    return y(d.value);
+  }).attr('height', function (d) {
+    return height - y(d.value);
+  });
 
-  // add the x Axis
-  g.append('g')
-    .attr('transform', `translate(0,${height})`)
-    .call(_d3.axisBottom(x));
+  g.append('g').attr('transform', 'translate(0,' + height + ')').call(_d3.axisBottom(x));
 
-  // add the y Axis
   g.append('g').call(_d3.axisLeft(y));
 
-  let result;
-  if (d3node) {
-    if (_export) result = d3n;
-    else result = d3n.chartHTML();
+  var result = void 0;
+  if (isNodeEnv()) {
+    if (_export) result = d3n;else result = d3n.chartHTML();
   } else result = _div.querySelector('#container').innerHTML;
 
   return result;
@@ -37585,57 +37579,90 @@ function bar ({
 
 module.exports = bar;
 
-
 /***/ }),
 /* 103 */
 /* no static exports found */
 /* all exports used */
-/*!*********************************!*\
-  !*** ./~/markvis-line/index.js ***!
-  \*********************************/
-/***/ (function(module, exports) {
+/*!*************************************!*\
+  !*** ./~/markvis-bar/dist/utils.js ***!
+  \*************************************/
+/***/ (function(module, exports, __webpack_require__) {
 
-function addStyle (css) {
-  const head = document.head || document.getElementsByTagName('head')[0];
-  const style = document.createElement('style');
+"use strict";
+
+
+exports.addStyle = function (css) {
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
 
   style.type = 'text/css';
-  if (style.styleSheet){
+  if (style.styleSheet) {
     style.styleSheet.cssText = css;
   } else {
     style.appendChild(document.createTextNode(css));
   }
 
   head.appendChild(style);
-}
+};
 
-function line({
-  data,
-  d3,
-  d3node,
-  selector: _selector = '#chart',
-  container: _container = `
-    <div id="container">
-      <h2>Line Chart</h2>
-      <div id="chart"></div>
-    </div>
-  `,
-  style: _style = '',
-  width: _width = 960,
-  height: _height = 500,
-  margin: _margin = { top: 20, right: 20, bottom: 20, left: 20 },
-  lineWidth: _lineWidth = 1.5,
-  lineColor: _lineColor = 'steelblue',
-  isCurve: _isCurve = true,
-  export: _export = false,
-} = {}) {
-  let _d3;
-  let d3n;
-  let svg;
-  let _div;
+/***/ }),
+/* 104 */
+/* no static exports found */
+/* all exports used */
+/*!**************************************!*\
+  !*** ./~/markvis-line/dist/index.js ***!
+  \**************************************/
+/***/ (function(module, exports, __webpack_require__) {
 
-  if (d3node) {
-    d3n = new d3node({
+"use strict";
+
+
+/**
+ * @fileOverview Generate line chart for markvis
+ * @name index.js<src>
+ * @author GeekPlux
+ * @license MIT
+ */
+var _require = __webpack_require__(/*! ./utils */ 105),
+    addStyle = _require.addStyle;
+
+function line() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      data = _ref.data,
+      d3 = _ref.d3,
+      D3Node = _ref.d3node,
+      _ref$selector = _ref.selector,
+      _selector = _ref$selector === undefined ? '#chart' : _ref$selector,
+      _ref$container = _ref.container,
+      _container = _ref$container === undefined ? '\n    <div id="container">\n      <h2>Line Chart</h2>\n      <div id="chart"></div>\n    </div>\n  ' : _ref$container,
+      _ref$style = _ref.style,
+      _style = _ref$style === undefined ? '' : _ref$style,
+      _ref$width = _ref.width,
+      _width = _ref$width === undefined ? 960 : _ref$width,
+      _ref$height = _ref.height,
+      _height = _ref$height === undefined ? 500 : _ref$height,
+      _ref$margin = _ref.margin,
+      _margin = _ref$margin === undefined ? { top: 20, right: 20, bottom: 20, left: 30 } : _ref$margin,
+      _ref$lineWidth = _ref.lineWidth,
+      _lineWidth = _ref$lineWidth === undefined ? 1.5 : _ref$lineWidth,
+      _ref$lineColor = _ref.lineColor,
+      _lineColor = _ref$lineColor === undefined ? 'steelblue' : _ref$lineColor,
+      _ref$isCurve = _ref.isCurve,
+      _isCurve = _ref$isCurve === undefined ? true : _ref$isCurve,
+      _ref$export = _ref.export,
+      _export = _ref$export === undefined ? false : _ref$export;
+
+  var _d3 = void 0;
+  var d3n = void 0;
+  var svg = void 0;
+  var _div = void 0;
+
+  var isNodeEnv = function isNodeEnv() {
+    return D3Node;
+  };
+
+  if (isNodeEnv()) {
+    d3n = new D3Node({
       selector: _selector,
       styles: _style,
       container: _container
@@ -37650,47 +37677,40 @@ function line({
     addStyle(_style);
   }
 
-  const width = _width - _margin.left - _margin.right;
-  const height = _height - _margin.top - _margin.bottom;
+  var width = _width - _margin.left - _margin.right;
+  var height = _height - _margin.top - _margin.bottom;
 
-  const gWrap = svg.attr('width', _width)
-    .attr('height', _height)
-    .append('g')
-    .attr('transform', `translate(${_margin.left}, ${_margin.top})`);
+  var gWrap = svg.attr('width', _width).attr('height', _height).append('g').attr('transform', 'translate(' + _margin.left + ', ' + _margin.top + ')');
 
-  const g = gWrap.append('g');
+  var g = gWrap.append('g');
 
-  const xScale = _d3.scaleLinear()
-        .rangeRound([0, width]);
-  const yScale = _d3.scaleLinear()
-        .rangeRound([height, 0]);
+  var xScale = _d3.scaleLinear().rangeRound([0, width]);
+  var yScale = _d3.scaleLinear().rangeRound([height, 0]);
 
-  const lineChart = _d3.line()
-        .x(d => xScale(d.key))
-        .y(d => yScale(d.value));
+  var lineChart = _d3.line().x(function (d) {
+    return xScale(d.key);
+  }).y(function (d) {
+    return yScale(d.value);
+  });
 
   if (_isCurve) lineChart.curve(_d3.curveBasis);
 
-  xScale.domain(_d3.extent(data, d => d.key));
-  yScale.domain(_d3.extent(data, d => d.value));
+  xScale.domain(_d3.extent(data, function (d) {
+    return d.key;
+  }));
+  yScale.domain(_d3.extent(data, function (d) {
+    return d.value;
+  }));
 
-  g.append('g')
-    .attr('transform', `translate(0, ${height})`)
-    .call(_d3.axisBottom(xScale));
+  g.append('g').attr('transform', 'translate(0, ' + height + ')').call(_d3.axisBottom(xScale));
 
   g.append('g').call(_d3.axisLeft(yScale));
 
-  g.append('path')
-    .datum(data)
-    .attr('fill', 'none')
-    .attr('stroke', _lineColor)
-    .attr('stroke-width', _lineWidth)
-    .attr('d', lineChart);
+  g.append('path').datum(data).attr('fill', 'none').attr('stroke', _lineColor).attr('stroke-width', _lineWidth).attr('d', lineChart);
 
-  let result;
-  if (d3node) {
-    if (_export) result = d3n;
-    else result = d3n.chartHTML();
+  var result = void 0;
+  if (isNodeEnv()) {
+    if (_export) result = d3n;else result = d3n.chartHTML();
   } else result = _div.querySelector('#container').innerHTML;
 
   return result;
@@ -37698,58 +37718,84 @@ function line({
 
 module.exports = line;
 
-
 /***/ }),
-/* 104 */
+/* 105 */
 /* no static exports found */
 /* all exports used */
-/*!********************************!*\
-  !*** ./~/markvis-pie/index.js ***!
-  \********************************/
-/***/ (function(module, exports) {
+/*!**************************************!*\
+  !*** ./~/markvis-line/dist/utils.js ***!
+  \**************************************/
+/***/ (function(module, exports, __webpack_require__) {
 
-function addStyle (css) {
-  const head = document.head || document.getElementsByTagName('head')[0];
-  const style = document.createElement('style');
+"use strict";
+
+
+exports.addStyle = function (css) {
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
 
   style.type = 'text/css';
-  if (style.styleSheet){
+  if (style.styleSheet) {
     style.styleSheet.cssText = css;
   } else {
     style.appendChild(document.createTextNode(css));
   }
 
   head.appendChild(style);
-}
+};
 
-function pie ({
-  data,
-  d3,
-  d3node,
-  selector: _selector = '#chart',
-  container: _container = `
-    <div id="container">
-      <h2>Pie Chart</h2>
-      <div id="chart"></div>
-    </div>
-  `,
-  style: _style = '',
-  width: _width = 400,
-  radius: _radius = _width / 2 * 0.9,
-  export: _export = false,
-} = {}) {
-  const _svgStyles = `
-    .arc text {font: 10px sans-serif; text-anchor: middle;}
-    .arc path {stroke: #fff;}
-  ` + _style;
+/***/ }),
+/* 106 */
+/* no static exports found */
+/* all exports used */
+/*!*************************************!*\
+  !*** ./~/markvis-pie/dist/index.js ***!
+  \*************************************/
+/***/ (function(module, exports, __webpack_require__) {
 
-  let _d3;
-  let d3n;
-  let svg;
-  let _div;
+"use strict";
 
-  if (d3node) {
-    d3n = new d3node({
+
+/**
+ * @fileOverview Generate pie chart for markvis
+ * @name index.js<src>
+ * @author GeekPlux
+ * @license MIT
+ */
+var _require = __webpack_require__(/*! ./utils */ 107),
+    addStyle = _require.addStyle;
+
+function pie() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      data = _ref.data,
+      d3 = _ref.d3,
+      D3Node = _ref.d3node,
+      _ref$selector = _ref.selector,
+      _selector = _ref$selector === undefined ? '#chart' : _ref$selector,
+      _ref$container = _ref.container,
+      _container = _ref$container === undefined ? '\n    <div id="container">\n      <h2>Pie Chart</h2>\n      <div id="chart"></div>\n    </div>\n  ' : _ref$container,
+      _ref$style = _ref.style,
+      _style = _ref$style === undefined ? '' : _ref$style,
+      _ref$width = _ref.width,
+      _width = _ref$width === undefined ? 400 : _ref$width,
+      _ref$radius = _ref.radius,
+      _radius = _ref$radius === undefined ? _width / 2 * 0.9 : _ref$radius,
+      _ref$export = _ref.export,
+      _export = _ref$export === undefined ? false : _ref$export;
+
+  var _svgStyles = '\n    .arc text { font: 10px sans-serif; text-anchor: middle; }\n    .arc path { stroke: #fff; }\n  ' + _style;
+
+  var _d3 = void 0;
+  var d3n = void 0;
+  var svg = void 0;
+  var _div = void 0;
+
+  var isNodeEnv = function isNodeEnv() {
+    return D3Node;
+  };
+
+  if (isNodeEnv()) {
+    d3n = new D3Node({
       selector: _selector,
       styles: _svgStyles,
       container: _container
@@ -37761,48 +37807,36 @@ function pie ({
     _div.innerHTML = _container;
     _d3 = d3;
     svg = _d3.select(_div).select('#chart').append('svg');
-    addStyle(_style);
+    addStyle(_svgStyles);
   }
 
-  const color = _d3.scaleOrdinal(_d3.schemeCategory20b);
-  const arc = _d3.arc()
-        .outerRadius(_radius - 10)
-        .innerRadius(0);
+  var color = _d3.scaleOrdinal(_d3.schemeCategory20b);
+  var arc = _d3.arc().outerRadius(_radius - 10).innerRadius(0);
 
-  const labelArc = _d3.arc()
-        .outerRadius(_radius - 40)
-        .innerRadius(_radius - 40);
+  var labelArc = _d3.arc().outerRadius(_radius - 40).innerRadius(_radius - 40);
 
-  const pie = _d3.pie()
-        .sort(null)
-        .value((d) => d.value);
+  var pie = _d3.pie().sort(null).value(function (d) {
+    return d.value;
+  });
 
-  const margin = _width / 2;
-  const g = svg.attr('width', _width)
-    .attr('height', _width)
-    .append('g')
-    .attr('transform', `translate(${margin}, ${margin})`);
+  var margin = _width / 2;
+  var g = svg.attr('width', _width).attr('height', _width).append('g').attr('transform', 'translate(' + margin + ', ' + margin + ')');
 
-  const gArc = g
-        .selectAll('.arc')
-        .data(pie(data))
-        .enter()
-        .append('g')
-        .attr('class', 'arc');
+  var gArc = g.selectAll('.arc').data(pie(data)).enter().append('g').attr('class', 'arc');
 
-  gArc.append('path')
-    .attr('d', arc)
-    .style('fill', (d) => color(d.data.key));
+  gArc.append('path').attr('d', arc).style('fill', function (d) {
+    return color(d.data.key);
+  });
 
-  gArc.append('text')
-    .attr('transform', (d) => `translate(${labelArc.centroid(d)})`)
-    .attr('dy', '.35em')
-    .text((d) => d.data.key);
+  gArc.append('text').attr('transform', function (d) {
+    return 'translate(' + labelArc.centroid(d) + ')';
+  }).attr('dy', '.35em').text(function (d) {
+    return d.data.key;
+  });
 
-  let result;
-  if (d3node) {
-    if (_export) result = d3n;
-    else result = d3n.chartHTML();
+  var result = void 0;
+  if (isNodeEnv()) {
+    if (_export) result = d3n;else result = d3n.chartHTML();
   } else result = _div.querySelector('#container').innerHTML;
 
   return result;
@@ -37810,77 +37844,109 @@ function pie ({
 
 module.exports = pie;
 
-
 /***/ }),
-/* 105 */
+/* 107 */
 /* no static exports found */
-/* exports used: default */
-/*!****************************!*\
-  !*** ./~/markvis/index.js ***!
-  \****************************/
+/* all exports used */
+/*!*************************************!*\
+  !*** ./~/markvis-pie/dist/utils.js ***!
+  \*************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-const mdFence = __webpack_require__(/*! markdown-it-fence */ 56)
-const render = __webpack_require__(/*! ./lib/render */ 106)
+exports.addStyle = function (css) {
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+
+  style.type = 'text/css';
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+
+  head.appendChild(style);
+};
+
+/***/ }),
+/* 108 */
+/* no static exports found */
+/* exports used: default */
+/*!*********************************!*\
+  !*** ./~/markvis/dist/index.js ***!
+  \*********************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var mdFence = __webpack_require__(/*! markdown-it-fence */ 56);
+var render = __webpack_require__(/*! ./render */ 109);
 
 module.exports = function (md, options) {
   return mdFence(md, 'vis', {
     marker: '`',
     render: render(options)
-  })
-}
-
+  });
+};
 
 /***/ }),
-/* 106 */
+/* 109 */
 /* no static exports found */
 /* all exports used */
-/*!*********************************!*\
-  !*** ./~/markvis/lib/render.js ***!
-  \*********************************/
+/*!**********************************!*\
+  !*** ./~/markvis/dist/render.js ***!
+  \**********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-const yaml = __webpack_require__(/*! js-yaml */ 32)
-const markvisBar = __webpack_require__(/*! markvis-bar */ 102)
-const markvisLine = __webpack_require__(/*! markvis-line */ 103)
-const markvisPie = __webpack_require__(/*! markvis-pie */ 104)
+"use strict";
 
-function render (options) {
-  return function (tokens, idx, _options, env, self) {
-    const token = tokens[idx]
-    // if (token.hidden) return '';
 
-    let doc
+var yaml = __webpack_require__(/*! js-yaml */ 32);
+var markvisBar = __webpack_require__(/*! markvis-bar */ 102);
+var markvisLine = __webpack_require__(/*! markvis-line */ 104);
+var markvisPie = __webpack_require__(/*! markvis-pie */ 106);
+
+function render(options) {
+  return function (tokens, idx, _options, env) {
+    var token = tokens[idx];
+
+    var doc = void 0;
 
     try {
-      doc = yaml.load(token.content)
+      doc = yaml.load(token.content);
     } catch (err) {
-      throw err
+      throw err;
     }
 
-    const chart = {
+    var defaultChart = {
       bar: markvisBar,
       line: markvisLine,
       pie: markvisPie
+    };
+
+    var chart = defaultChart;
+
+    if (options && Object.prototype.hasOwnProperty.call(options, 'chart')) {
+      chart = Object.assign({}, defaultChart, options.chart);
     }
 
-    const renderer = chart[doc.layout]
-    const opts = Object.assign({}, options, env, doc)
-    const result = renderer ? renderer(opts)
-          : token.content
+    var renderer = chart[doc.layout];
 
-    return result
-  }
+    var opts = Object.assign({}, options, env, doc);
+
+    var result = renderer ? renderer(opts) : token.content;
+
+    return result;
+  };
 }
 
-module.exports = render
-
+module.exports = render;
 
 /***/ }),
-/* 107 */
+/* 110 */
 /* no static exports found */
 /* all exports used */
 /*!***************************!*\
@@ -38014,7 +38080,7 @@ module.exports = decode;
 
 
 /***/ }),
-/* 108 */
+/* 111 */
 /* no static exports found */
 /* all exports used */
 /*!***************************!*\
@@ -38124,7 +38190,7 @@ module.exports = encode;
 
 
 /***/ }),
-/* 109 */
+/* 112 */
 /* no static exports found */
 /* all exports used */
 /*!***************************!*\
@@ -38161,7 +38227,7 @@ module.exports = function format(url) {
 
 
 /***/ }),
-/* 110 */
+/* 113 */
 /* no static exports found */
 /* all exports used */
 /*!**************************!*\
@@ -38485,7 +38551,7 @@ module.exports = urlParse;
 
 
 /***/ }),
-/* 111 */
+/* 114 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -39026,10 +39092,10 @@ module.exports = urlParse;
 
 }(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/module.js */ 118)(module), __webpack_require__(/*! ./../webpack/buildin/global.js */ 7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/module.js */ 121)(module), __webpack_require__(/*! ./../webpack/buildin/global.js */ 7)))
 
 /***/ }),
-/* 112 */
+/* 115 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************************!*\
@@ -39040,7 +39106,7 @@ module.exports = urlParse;
 module.exports=/[\xAD\u0600-\u0605\u061C\u06DD\u070F\u08E2\u180E\u200B-\u200F\u202A-\u202E\u2060-\u2064\u2066-\u206F\uFEFF\uFFF9-\uFFFB]|\uD804\uDCBD|\uD82F[\uDCA0-\uDCA3]|\uD834[\uDD73-\uDD7A]|\uDB40[\uDC01\uDC20-\uDC7F]/
 
 /***/ }),
-/* 113 */
+/* 116 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************!*\
@@ -39053,14 +39119,14 @@ module.exports=/[\xAD\u0600-\u0605\u061C\u06DD\u070F\u08E2\u180E\u200B-\u200F\u2
 
 exports.Any = __webpack_require__(/*! ./properties/Any/regex */ 21);
 exports.Cc  = __webpack_require__(/*! ./categories/Cc/regex */ 19);
-exports.Cf  = __webpack_require__(/*! ./categories/Cf/regex */ 112);
+exports.Cf  = __webpack_require__(/*! ./categories/Cf/regex */ 115);
 exports.P   = __webpack_require__(/*! ./categories/P/regex */ 11);
 exports.Z   = __webpack_require__(/*! ./categories/Z/regex */ 20);
 
 
 /***/ }),
-/* 114 */,
-/* 115 */
+/* 117 */,
+/* 118 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************!*\
@@ -39162,8 +39228,8 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 116 */,
-/* 117 */
+/* 119 */,
+/* 120 */
 /* exports provided: default */
 /* exports used: default */
 /*!***************************************!*\
@@ -46306,7 +46372,7 @@ setTimeout(function () {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(/*! ./../../webpack/buildin/global.js */ 7)))
 
 /***/ }),
-/* 118 */
+/* 121 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -46340,4 +46406,4 @@ module.exports = function(module) {
 
 /***/ })
 ]);
-//# sourceMappingURL=vendor.14c3449d.js.map
+//# sourceMappingURL=vendor.faad2ef8.js.map

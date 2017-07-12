@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 114:
+/***/ 117:
 /* exports provided: default */
 /* exports used: default */
 /*!*****************!*\
@@ -10,11 +10,11 @@ webpackJsonp([1],{
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_babelrc_false_presets_Users_geekplux_Dropbox_project_fun_markvis_markvis_editor_node_modules_babel_preset_vue_app_dist_index_common_js_useBuiltIns_true_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(/*! !babel-loader?{"cacheDirectory":true,"babelrc":false,"presets":[["/Users/geekplux/Dropbox/project/fun/markvis/markvis-editor/~/babel-preset-vue-app/dist/index.common.js",{"useBuiltIns":true}]]}!./~/vue-loader/lib/selector?type=script&index=0!./App.vue */ 23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2ee06bc7_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(/*! !./~/vue-loader/lib/template-compiler/index?{"id":"data-v-2ee06bc7"}!./~/vue-loader/lib/selector?type=template&index=0!./App.vue */ 116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2ee06bc7_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(/*! !./~/vue-loader/lib/template-compiler/index?{"id":"data-v-2ee06bc7"}!./~/vue-loader/lib/selector?type=template&index=0!./App.vue */ 119);
 function injectStyle (ssrContext) {
   __webpack_require__(/*! !./~/extract-text-webpack-plugin/loader.js?{"omit":1,"remove":true}!vue-style-loader!css-loader?{"autoprefixer":false,"sourceMap":true,"minimize":false}!./~/vue-loader/lib/style-compiler/index?{"vue":true,"id":"data-v-2ee06bc7","scoped":false,"hasInlineConfig":true}!./~/vue-loader/lib/selector?type=styles&index=0!./App.vue */ 29)
 }
-var normalizeComponent = __webpack_require__(/*! ./~/vue-loader/lib/component-normalizer */ 115)
+var normalizeComponent = __webpack_require__(/*! ./~/vue-loader/lib/component-normalizer */ 118)
 /* script */
 
 /* template */
@@ -38,7 +38,7 @@ var Component = normalizeComponent(
 
 /***/ }),
 
-/***/ 116:
+/***/ 119:
 /* exports provided: default */
 /* exports used: default */
 /*!************************************************************************************************************************************!*\
@@ -95,7 +95,7 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
 
 /***/ }),
 
-/***/ 119:
+/***/ 122:
 /* no static exports found */
 /* all exports used */
 /*!************************!*\
@@ -118,8 +118,8 @@ module.exports = __webpack_require__(/*! /Users/geekplux/Dropbox/project/fun/mar
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(/*! vue */ 117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(/*! ./App */ 114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(/*! vue */ 120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(/*! ./App */ 117);
 
 
 
@@ -143,7 +143,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_markdown_it__ = __webpack_require__(/*! markdown-it */ 57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_markdown_it___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_markdown_it__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_markvis__ = __webpack_require__(/*! markvis */ 105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_markvis__ = __webpack_require__(/*! markvis */ 108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_markvis___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_markvis__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_debounce__ = __webpack_require__(/*! lodash.debounce */ 55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_debounce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_debounce__);
@@ -2352,5 +2352,5 @@ module.exports = {
 
 /***/ })
 
-},[119]);
-//# sourceMappingURL=client.0668136d.js.map
+},[122]);
+//# sourceMappingURL=client.5e49ca0d.js.map
