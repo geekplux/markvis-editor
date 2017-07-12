@@ -1,7 +1,19 @@
 <template>
   <div id="app" class="app">
+    <div class="sidebar">
+      <h1>Markvis</h1>
+      <h2>Make visualization in markdown.</h2>
+      <ul>
+        <li><a href="https://markvis.js.org">Home</a></li>
+        <li><a href="https://markvis.js.org">Editor</a></li>
+        <li><a href="https://github.com/geekplux/markvis">Source</a></li>
+      </ul>
+      <div class="footer">
+        <h2>MIT © <a href="https://github.com/geekplux">GeekPlux</a></h2>
+      </div>
+    </div>
     <textarea :value="input" @input="update"></textarea>
-    <div ref="preview" v-html="compiledMarkdown"></div>
+    <div class="preview" ref="preview" v-html="compiledMarkdown"></div>
   </div>
 </template>
 
@@ -110,16 +122,18 @@
 </script>
 
 <style>
-  html, body, #app {
+  html, body, .app {
     margin: 0;
     height: 100%;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     color: #333;
   }
 
-  textarea, #app > div {
-    display: inline-block;
-    width: 49%;
+  .app {
+    display: flex;
+  }
+
+  textarea, .preview {
     height: 100%;
     vertical-align: top;
     box-sizing: border-box;
@@ -128,6 +142,7 @@
   }
 
   textarea {
+    flex: 4;
     border: none;
     border-right: 1px solid #ccc;
     resize: none;
@@ -136,6 +151,42 @@
     font-size: 14px;
     font-family: 'Monaco', courier, monospace;
     padding: 20px;
+    box-shadow: 0 1px 5px #aaa inset;
+  }
+
+  .sidebar {
+    flex: 2;
+    padding: 20px;
+    box-shadow: 10px 10px 10px #000;
+  }
+
+  .sidebar h2 {
+    color: #bbb;
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  .sidebar ul {
+    margin-top: 30px;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .sidebar li {
+    list-style: none;
+  }
+
+  .sidebar li a {
+    color: #aaa;
+  }
+
+  .sidebar .footer {
+    position: absolute;
+    bottom: 100px;
+  }
+
+  .preview {
+    flex: 7;
   }
 
   code {
