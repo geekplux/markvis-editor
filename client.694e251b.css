@@ -1,0 +1,73 @@
+
+html, body, .app {
+  margin: 0;
+  height: 100%;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+}
+.app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+textarea, .preview {
+  height: 100%;
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 20px;
+  overflow-y: scroll;
+}
+textarea {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+  border: none;
+  border-right: 1px solid #ccc;
+  resize: none;
+  outline: none;
+  background-color: #f6f6f6;
+  font-size: 14px;
+  font-family: 'Monaco', courier, monospace;
+  padding: 20px;
+  -webkit-box-shadow: 0 1px 5px #aaa inset;
+          box-shadow: 0 1px 5px #aaa inset;
+}
+.sidebar {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  padding: 20px;
+  -webkit-box-shadow: 10px 10px 10px #000;
+          box-shadow: 10px 10px 10px #000;
+}
+.sidebar h2 {
+  color: #bbb;
+  font-style: italic;
+  font-size: 16px;
+}
+.sidebar ul {
+  margin-top: 30px;
+  padding: 0;
+  font-size: 14px;
+}
+.sidebar li {
+  list-style: none;
+}
+.sidebar li a {
+  color: #aaa;
+}
+.sidebar .footer {
+  position: absolute;
+  bottom: 100px;
+}
+.preview {
+  -webkit-box-flex: 7;
+      -ms-flex: 7;
+          flex: 7;
+}
+code {
+  color: #f66;
+}
+
+/*# sourceMappingURL=client.694e251b.css.map*/

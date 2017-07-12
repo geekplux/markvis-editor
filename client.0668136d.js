@@ -53,7 +53,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "id": "app"
     }
-  }, [_c('textarea', {
+  }, [_vm._m(0), _vm._v(" "), _c('textarea', {
     domProps: {
       "value": _vm.input
     },
@@ -62,12 +62,35 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('div', {
     ref: "preview",
+    staticClass: "preview",
     domProps: {
       "innerHTML": _vm._s(_vm.compiledMarkdown)
     }
   })])
 }
-var staticRenderFns = []
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "sidebar"
+  }, [_c('h1', [_vm._v("Markvis")]), _vm._v(" "), _c('h2', [_vm._v("Make visualization in markdown.")]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "https://markvis.js.org"
+    }
+  }, [_vm._v("Home")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "https://markvis.js.org"
+    }
+  }, [_vm._v("Editor")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "https://github.com/geekplux/markvis"
+    }
+  }, [_vm._v("Source")])])]), _vm._v(" "), _c('div', {
+    staticClass: "footer"
+  }, [_c('h2', [_vm._v("MIT © "), _c('a', {
+    attrs: {
+      "href": "https://github.com/geekplux"
+    }
+  }, [_vm._v("GeekPlux")])])])])
+}]
 /* harmony default export */ __webpack_exports__["a"] = ({ render: render, staticRenderFns: staticRenderFns });
 
 /***/ }),
@@ -126,6 +149,18 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_debounce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_debounce__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_d3__ = __webpack_require__(/*! d3 */ 26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_d3___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_d3__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2318,4 +2353,4 @@ module.exports = {
 /***/ })
 
 },[119]);
-//# sourceMappingURL=client.4b217a50.js.map
+//# sourceMappingURL=client.0668136d.js.map
