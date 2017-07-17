@@ -5,7 +5,7 @@
       <h2>Make visualization in markdown.</h2>
       <ul>
         <li><a href="https://markvis.js.org">Home</a></li>
-        <li><a href="https://markvis.js.org">Editor</a></li>
+        <li><a href="https://markvis-editor.js.org">Editor</a></li>
         <li><a href="https://github.com/geekplux/markvis">Source</a></li>
       </ul>
       <div class="footer">
